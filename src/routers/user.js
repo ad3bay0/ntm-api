@@ -15,7 +15,7 @@ router.post('/users', async (req, res) => {
 
         await user.save();
         const token = await user.generateToken()
-        res.status(200).send({ user, token });
+        res.status(201).send({ user, token });
 
     } catch (error) {
 
@@ -122,7 +122,7 @@ router.delete('/users/me', auth, async (req, res) => {
 
         await req.user.remove();
 
-        req.status(200).send(req.user);
+        res.status(200).send();
 
     } catch (error) {
 
